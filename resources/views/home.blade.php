@@ -1,4 +1,8 @@
-@include('_includes.top')
+@extends('layout.site')
+
+@section('titulo','Home')
+
+@section('conteudo')
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -435,4 +439,4 @@
         </div>
       </div>
 
-@include('_includes.footer')
+@endsection
