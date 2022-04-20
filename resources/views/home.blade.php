@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="fa fa-coins opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="fa fa-earth-americas opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="fa fa-graduation-cap opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="fa fa-cart-shopping opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -377,7 +377,7 @@
               <div class="timeline timeline-one-side">
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="ni ni-bell-55 text-success text-gradient"></i>
+                    <i class="fa fa-bell text-success text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
@@ -386,7 +386,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="ni ni-html5 text-danger text-gradient"></i>
+                    <i class="fa fa-html5 text-danger text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
@@ -395,7 +395,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="ni ni-cart text-info text-gradient"></i>
+                    <i class="fa fa-cart-shopping text-info text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
@@ -404,7 +404,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="ni ni-credit-card text-warning text-gradient"></i>
+                    <i class="fa fa-credit-card text-warning text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
@@ -413,7 +413,7 @@
                 </div>
                 <div class="timeline-block mb-3">
                   <span class="timeline-step">
-                    <i class="ni ni-key-25 text-primary text-gradient"></i>
+                    <i class="fa fa-key text-primary text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
@@ -422,7 +422,7 @@
                 </div>
                 <div class="timeline-block">
                   <span class="timeline-step">
-                    <i class="ni ni-money-coins text-dark text-gradient"></i>
+                    <i class="fa fa-coins text-dark text-gradient"></i>
                   </span>
                   <div class="timeline-content">
                     <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
