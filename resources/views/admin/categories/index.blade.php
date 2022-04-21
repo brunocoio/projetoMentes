@@ -12,7 +12,7 @@
                   <h6 class="mb-0">Categorias</h6>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-link text-success px-3 mb-0" href="javascript:;"><i class="fas fa-circle-plus text-success me-2" aria-hidden="true"></i>Adicionar</a>
+                    <a class="btn btn-link text-success px-3 mb-0" href="{{route('admin.categories.add')}}"><i class="fas fa-circle-plus text-success me-2" aria-hidden="true"></i>Adicionar</a>
                 </div>
               </div>
         </div>

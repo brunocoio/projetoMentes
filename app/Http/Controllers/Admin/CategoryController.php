@@ -14,25 +14,28 @@ class CategoryController extends Controller
         $registers = Category::all();
         return view('admin.categories.index', compact('registers'));
     }
-
+//
     public function add(){
         return view('admin.categories.add');
     }
-
+//create
     public function save(Request $req){
-        $itens = $req->all();
-        Category::create($itens);
+        $registers = $req->all();
+        Category::create($registers);
         return redirect()->route('admin.categories');
     }
-
-    public function edit(){
-        return view('admin.categories.edit');
+//search
+    public function edit($id){
+        $registers = Category::find($id);
+        return view('admin.categories.edit',compact('registers'));
     }
-
-    public function update(){
-        return view('admin.categories.update');
+//
+    public function update(Request $req, $id){
+        $registers = $req->all();
+        Category::find($id)->update($registers);
+        return redirect()->route('admin.categories');
     }
-
+//
     public function delete(){
         return view('admin.categories.delete');
     }
