@@ -8,7 +8,7 @@
     <div class="col-lg-6 mx-auto">
       <div class="card">
         <div class="card-header text-center">
-          <h5>Categoria</h5>
+          <h5>Adicionar Categoria</h5>
         </div>
         <div class="card-body">
             <form action="{{route('admin.categories.save')}}" method="POST" enctype="multipart/form-data">

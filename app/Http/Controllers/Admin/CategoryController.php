@@ -29,14 +29,15 @@ class CategoryController extends Controller
         $registers = Category::find($id);
         return view('admin.categories.edit',compact('registers'));
     }
-//
+//update
     public function update(Request $req, $id){
         $registers = $req->all();
         Category::find($id)->update($registers);
         return redirect()->route('admin.categories');
     }
-//
-    public function delete(){
-        return view('admin.categories.delete');
+//delete
+    public function delete($id){
+        Category::find($id)->delete();
+        return redirect()->route('admin.categories');
     }
 }
