@@ -379,7 +379,18 @@
             </div>
             <div class="card-body p-3">
               <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
+                @foreach ($categories as $category)
+                    <div class="timeline-block mb-3">
+                        <span class="timeline-step">
+                            <i class="fa fa-bell text-success text-gradient"></i>
+                        </span>
+                        <div class="timeline-content">
+                            <h6 class="text-dark text-sm font-weight-bold mb-0">{{$category->name}}</h6>
+                            <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{$category->created_at}}</p>
+                        </div>
+                    </div>
+                @endforeach
+                <!--div class="timeline-block mb-3">
                   <span class="timeline-step">
                     <i class="fa fa-bell text-success text-gradient"></i>
                   </span>
@@ -424,7 +435,7 @@
                     <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
                   </div>
                 </div>
-                <div class="timeline-block">
+                <div-- class="timeline-block">
                   <span class="timeline-step">
                     <i class="fa fa-coins text-dark text-gradient"></i>
                   </span>
@@ -432,7 +443,7 @@
                     <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
                     <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
                   </div>
-                </div>
+                </div-->
               </div>
             </div>
           </div>

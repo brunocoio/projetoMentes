@@ -16,10 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+//site
+/**
+ * Home
+ * [V] RESOURCES > VIEWS > SITE *
+ * [V] HTTP > CONTROLLERS > SITE > HomeController
+ * [X] APP > MODELS > -
+ * [X] DATABASE > MIGRATIONS -
+*/
+Route::get('/', ['as'=>'site.home', 'uses'=>'App\Http\Controllers\Site\HomeController@index']);
+
 //admin
 /**
  * Category
- * [X] RESOURCES > VIEWS
+ * [V] RESOURCES > VIEWS > ADMIN *
  * [V] HTTP > CONTROLLERS > ADMIN > CategoryController
  * [V] APP > MODELS > Category
  * [V] DATABASE > MIGRATIONS *
