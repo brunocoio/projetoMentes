@@ -14,9 +14,8 @@ class LoginController extends Controller
     }
     public function in(Request $req)
     {
-      $itens = $req->all();
-      if(Auth::attempt(['email'=>$itens['email'],'password'=>$itens['password']])){
-        return redirect()->route('admin.cursos');
+      if(Auth::attempt($req->only(['email','password']))){
+        return redirect()->route('admin.categories');
       }
 
       return redirect()->route('site.login');

@@ -11,6 +11,12 @@
 
 Projeto desenvolvido com intúito de aplicar conhecimentos de laravel em um sistema de controle financeiro.
 
+## Executar
+
+php artisan migrate
+php artisan db:seed
+Acessar com usuário (doc UserSeeder.php)
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).

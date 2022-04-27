@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\LoginController;
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,7 @@ Route::get('/', function () {
  * [X] APP > MODELS > -
  * [X] DATABASE > MIGRATIONS -
 */
-Route::get('/', ['as'=>'site.home', 'uses'=>'App\Http\Controllers\Site\HomeController@index']);
+Route::get('/',[HomeController::class,'index'],['name' =>'site.home']);
 
 //login
 /**
@@ -35,9 +38,9 @@ Route::get('/', ['as'=>'site.home', 'uses'=>'App\Http\Controllers\Site\HomeContr
  * [X] APP > MODELS > -
  * [X] DATABASE > MIGRATIONS -
 */
-Route::get('/login',['as'=>'site.login','uses'=>'App\Http\Controllers\Site\LoginController@index']);
-Route::post('/login/in',['as'=>'site.login.in','uses'=>'App\Http\Controllers\Site\LoginController@in']);
-Route::get('/login/out',['as'=>'site.login.out','uses'=>'App\Http\Controllers\Site\LoginController@out']);
+Route::get('/login',[LoginController::class,'index'])->name('site.login');
+Route::post('/login/in',[LoginController::class,'in'])->name('site.login.in');
+Route::get('/login/out',[LoginController::class,'out'])->name('site.login.out');
 
 //admin
 /**
@@ -47,12 +50,11 @@ Route::get('/login/out',['as'=>'site.login.out','uses'=>'App\Http\Controllers\Si
  * [V] APP > MODELS > Category
  * [V] DATABASE > MIGRATIONS *
 */
-Route::group(['middleware'=>'auth'],  function ()
-{
-    Route::get('/admin/categories', ['as'=>'admin.categories', 'uses'=>'App\Http\Controllers\Admin\CategoryController@index']);
-    Route::get('/admin/categories/add', ['as'=>'admin.categories.add', 'uses'=>'App\Http\Controllers\Admin\CategoryController@add']);
-    Route::post('/admin/categories/save', ['as'=>'admin.categories.save', 'uses'=>'App\Http\Controllers\Admin\CategoryController@save']);
-    Route::get('/admin/categories/edit/{id}', ['as'=>'admin.categories.edit', 'uses'=>'App\Http\Controllers\Admin\CategoryController@edit']);
-    Route::put('/admin/categories/update/{id}', ['as'=>'admin.categories.update', 'uses'=>'App\Http\Controllers\Admin\CategoryController@update']);
-    Route::get('/admin/categories/delete/{id}', ['as'=>'admin.categories.delete', 'uses'=>'App\Http\Controllers\Admin\CategoryController@delete']);
+Route::group(['middleware'=>'auth'],  function (){
+    Route::get('/admin/categories',[CategoryController::class,'index'])->name('admin.categories');
+    Route::get('/admin/categories/add',[CategoryController::class,'add'])->name('admin.categories.add');
+    Route::post('/admin/categories/save',[CategoryController::class,'save'])->name('admin.categories.save');
+    Route::get('/admin/categories/edit/{id}',[CategoryController::class,'edit'])->name('admin.categories.edit');
+    Route::put('/admin/categories/update/{id}',[CategoryController::class,'update'])->name('admin.categories.update');
+    Route::get('/admin/categories/delete/{id}',[CategoryController::class,'delete'])->name('admin.categories.delete');
 });
