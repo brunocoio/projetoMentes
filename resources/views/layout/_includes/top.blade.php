@@ -77,18 +77,24 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <ul class="navbar-nav  justify-content-end">
-                @if (!Auth::guest())
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
-                            <span class="d-sm-inline d-none">Logout</span>
-                            <i class="fa fa-power-off me-sm-1"></i>
-                        </a>
-                    </li>
-                @else
+                @if(Auth::guest())
                     <li class="nav-item d-flex align-items-center">
                         <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
                             <span class="d-sm-inline d-none">Login</span>
                             <i class="fa fa-user me-sm-1"></i>
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link text-body font-weight-bold px-0">
+                            <span class="d-sm-inline d-none">{{Auth::user()->name}}</span>
+                            <i class="fa fa-user me-sm-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
+                            <span class="d-sm-inline d-none">Logout</span>
+                            <i class="fa fa-power-off me-sm-1"></i>
                         </a>
                     </li>
                 @endif
