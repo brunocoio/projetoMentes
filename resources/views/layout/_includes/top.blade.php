@@ -49,14 +49,16 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  " href="{{route('admin.categories')}}">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa fa-comments-dollar"></i>
-            </div>
-            <span class="nav-link-text ms-1">Categorias</span>
-          </a>
-        </li>
+        @if (!Auth::guest())
+            <li class="nav-item">
+                <a class="nav-link  " href="{{route('admin.categories')}}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-comments-dollar"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Categorias</span>
+                </a>
+            </li>
+        @endif
       </ul>
     </div>
   </aside>
@@ -75,12 +77,21 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             </div>
             <ul class="navbar-nav  justify-content-end">
-              <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                  <i class="fa fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Login</span>
-                </a>
-              </li>
+                @if (!Auth::guest())
+                    <li class="nav-item d-flex align-items-center">
+                        <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
+                            <span class="d-sm-inline d-none">Logout</span>
+                            <i class="fa fa-power-off me-sm-1"></i>
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item d-flex align-items-center">
+                        <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
+                            <span class="d-sm-inline d-none">Login</span>
+                            <i class="fa fa-user me-sm-1"></i>
+                        </a>
+                    </li>
+                @endif
               <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                   <div class="sidenav-toggler-inner">

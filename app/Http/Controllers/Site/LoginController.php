@@ -20,9 +20,11 @@ class LoginController extends Controller
 
       return redirect()->route('site.login');
     }
-    public function out()
+    public function out(Request $req)
     {
-      Auth::logout();
+        Auth::logout();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
       return redirect()->route('site.home');
     }
 }

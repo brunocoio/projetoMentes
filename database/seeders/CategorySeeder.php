@@ -17,12 +17,31 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-        'name' => Str::random(10),
-        'type' => 'in'
+            'name' => 'Supermercado',
+            'type' => 'out'
         ]);
         DB::table('categories')->insert([
+            'name' => 'Adiantamento',
+            'type' => 'in'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Energia',
+            'type' => 'out'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Água',
+            'type' => 'out'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Carro',
+            'type' => 'out'
+        ]);DB::table('categories')->insert([
+            'name' => 'Pagamento',
+            'type' => 'in'
+        ]);
+        /*DB::table('categories')->insert([
         'name' => Str::random(10),
         'type' => 'out'
-        ]);
+        ]);*/
     }
 }

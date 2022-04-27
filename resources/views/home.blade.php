@@ -382,7 +382,7 @@
                 @foreach ($categories as $category)
                     <div class="timeline-block mb-3">
                         <span class="timeline-step">
-                            <i class="fa fa-bell text-success text-gradient"></i>
+                            <i class="fa fa-bell {{($category->type =='in')? 'text-success' : 'text-danger' }} text-gradient"></i>
                         </span>
                         <div class="timeline-content">
                             <h6 class="text-dark text-sm font-weight-bold mb-0">{{$category->name}}</h6>
