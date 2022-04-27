@@ -16,9 +16,7 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 //index
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('site.login'); });
 
 //site
 /**
@@ -28,7 +26,7 @@ Route::get('/', function () {
  * [X] APP > MODELS > -
  * [X] DATABASE > MIGRATIONS -
 */
-Route::get('/',[HomeController::class,'index'],['name' =>'site.home']);
+Route::get('/',[HomeController::class,'index'],['name' =>'site.login']);
 
 //login
 /**

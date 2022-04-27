@@ -92,7 +92,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
-                        <a href="{{route('site.login')}}" class="nav-link text-body font-weight-bold px-0">
+                        <a href="{{route('site.login.out')}}" class="nav-link text-body font-weight-bold px-0">
                             <span class="d-sm-inline d-none">Logout</span>
                             <i class="fa fa-power-off me-sm-1"></i>
                         </a>
