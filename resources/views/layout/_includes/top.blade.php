@@ -23,7 +23,6 @@
   <title> Kimera </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/05af1bbaf9.js" crossorigin="anonymous"></script>
   <!-- CSS Files -->
@@ -33,27 +32,26 @@
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="/" >
-        <span class="ms-1 font-weight-bold">Painel</span>
+      <a class="navbar-brand m-0" >
+        <i class="fa fa-screwdriver-wrench"></i> <span class="ms-1 font-weight-bold">Painel</span> | <i class="fa fa-user me-sm-1"></i> {{Auth::user()->name}}
       </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link  active" href="/">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa fa-screwdriver-wrench"></i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
         @if (!Auth::guest())
             <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-screwdriver-wrench"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link  " href="{{route('admin.categories')}}">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-comments-dollar"></i>
+                    <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-chalkboard-user"></i>
                     </div>
                     <span class="nav-link-text ms-1">Categorias</span>
                 </a>
@@ -68,7 +66,7 @@
         <div class="container-fluid py-1 px-3">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Painel</a></li>
+              <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Painel</a></li>
               <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
             </ol>
             <h6 class="font-weight-bolder mb-0">Dashboard</h6>
@@ -85,12 +83,6 @@
                         </a>
                     </li>
                 @else
-                    <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link text-body font-weight-bold px-0">
-                            <span class="d-sm-inline d-none">{{Auth::user()->name}}</span>
-                            <i class="fa fa-user me-sm-1"></i>
-                        </a>
-                    </li>
                     <li class="nav-item d-flex align-items-center">
                         <a href="{{route('site.login.out')}}" class="nav-link text-body font-weight-bold px-0">
                             <span class="d-sm-inline d-none">Logout</span>
