@@ -28,6 +28,5 @@ class UserSeeder extends Seeder
             User::create($items);
             echo"Usuário gerado";
         }
-
     }
 }
