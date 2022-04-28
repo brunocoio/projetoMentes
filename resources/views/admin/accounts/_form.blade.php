@@ -1,5 +1,5 @@
 <div class="form-group">
-    <input type="text" name="name" id="" class="form-control" value="{{isset($registers->name)?$registers->name:''}}" placeholder="Nome">
+    <input type="number" name="value" id="" class="form-control" value="{{isset($registers->value)?$registers->value:''}}" placeholder="Valor">
 </div>
 <div class="form-group">
     <label for="exampleFormControlSelect1">Selecione o tipo</label>
@@ -8,3 +8,5 @@
         <option value="out" {{ isset($registers->type) && $registers->type === 'out' ? "selected='selected'" : '' }}>Saída</option>
     </select>
 </div>
+<input type="hidden" name="name" value="{{Auth::user()->name}}">
+<input type="hidden" name="id_user" value="{{Auth::user()->id}}">

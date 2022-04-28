@@ -48,6 +48,11 @@ $con->delete();
 /**/
 /**/
 //CRUD
+//limpar cache
+php artisan optimize
+php artisan cache:clear
+//listar as rotas
+php artisan route:list
 
 //gera model - tabela banco de dados
 php artisan make:model Curso -m

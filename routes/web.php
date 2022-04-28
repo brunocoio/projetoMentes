@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\LoginController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,34 @@ Route::group(['middleware'=>'auth'],  function (){
     Route::get('/admin/categories/edit/{id}',[CategoryController::class,'edit'])->name('admin.categories.edit');
     Route::put('/admin/categories/update/{id}',[CategoryController::class,'update'])->name('admin.categories.update');
     Route::get('/admin/categories/delete/{id}',[CategoryController::class,'delete'])->name('admin.categories.delete');
+});
+/**
+ * User
+ * [V] RESOURCES > VIEWS > ADMIN *
+ * [V] HTTP > CONTROLLERS > ADMIN > UserController
+ * [V] APP > MODELS > User
+ * [V] DATABASE > MIGRATIONS *
+*/
+Route::group(['middleware'=>'auth'],  function (){
+    Route::get('/admin/users',[UserController::class,'index'])->name('admin.users');
+    Route::get('/admin/users/add',[UserController::class,'add'])->name('admin.users.add');
+    Route::post('/admin/users/save',[UserController::class,'save'])->name('admin.users.save');
+    Route::get('/admin/users/edit/{id}',[UserController::class,'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/update/{id}',[UserController::class,'update'])->name('admin.users.update');
+    Route::get('/admin/users/delete/{id}',[UserController::class,'delete'])->name('admin.users.delete');
+});
+/**
+ * Account
+ * [V] RESOURCES > VIEWS > ADMIN *
+ * [V] HTTP > CONTROLLERS > ADMIN > AccountController
+ * [V] APP > MODELS > Account
+ * [V] DATABASE > MIGRATIONS *
+*/
+Route::group(['middleware'=>'auth'],  function (){
+    Route::get('/admin/accounts',[AccountController::class,'index'])->name('admin.accounts');
+    Route::get('/admin/accounts/add',[AccountController::class,'add'])->name('admin.accounts.add');
+    Route::post('/admin/accounts/save',[AccountController::class,'save'])->name('admin.accounts.save');
+    Route::get('/admin/accounts/edit/{id}',[AccountController::class,'edit'])->name('admin.accounts.edit');
+    Route::put('/admin/accounts/update/{id}',[AccountController::class,'update'])->name('admin.accounts.update');
+    Route::get('/admin/accounts/delete/{id}',[AccountController::class,'delete'])->name('admin.accounts.delete');
 });

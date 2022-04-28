@@ -49,11 +49,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href="{{route('admin.categories')}}">
+                <a class="nav-link" href="{{route('admin.categories')}}">
                     <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-chalkboard-user"></i>
                     </div>
                     <span class="nav-link-text ms-1">Categorias</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.users')}}">
+                    <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Usuários</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.accounts')}}">
+                    <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-dollar"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Contas</span>
                 </a>
             </li>
         @endif
