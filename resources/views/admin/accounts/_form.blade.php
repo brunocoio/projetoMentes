@@ -3,9 +3,9 @@
 </div>
 <div class="form-group">
     <label for="exampleFormControlSelect1">Selecione o tipo</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="type">
-        <option value="in" {{ isset($registers->type) && $registers->type === 'in' ? "selected='selected'" : '' }}>Entrada</option>
-        <option value="out" {{ isset($registers->type) && $registers->type === 'out' ? "selected='selected'" : '' }}>Saída</option>
+    <select class="form-control" id="exampleFormControlSelect1" name="category">
+        <option value="1" {{ isset($registers->category) && $registers->category == '1' ? "selected='selected'" : '' }}>Entrada</option>
+        <option value="2" {{ isset($registers->category) && $registers->category == '2' ? "selected='selected'" : '' }}>Saída</option>
     </select>
 </div>
 <input type="hidden" name="name" value="{{Auth::user()->name}}">

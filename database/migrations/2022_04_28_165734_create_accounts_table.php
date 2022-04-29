@@ -16,8 +16,8 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('category');
-            $table->decimal('id_user');
+            $table->integer('category');
+            $table->integer('id_user');
             $table->decimal('value',5,2);
             $table->timestamps();
         });
