@@ -12,6 +12,8 @@ class AccountController extends Controller
 {
     public function index()
     {
+        //dd(Account::first());
+        //dd(Account::first()->category);
         $registers = Account::paginate(5);
         $categories = Category::all();
         /**$results = DB::table('accounts')

@@ -12,4 +12,9 @@ class Account extends Model
     protected $fillable = [
         'name', 'category_id','user_id', 'value'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
