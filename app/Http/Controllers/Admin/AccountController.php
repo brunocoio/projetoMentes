@@ -6,17 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
     public function index()
     {
         $registers = Account::paginate(5);
-        return view('admin.accounts.index', compact('registers'));
+        $categories = Category::all();
+        /**$results = DB::table('accounts')
+        *    ->join('categories', 'accounts.category_id', '=', 'categories.id')
+        *    ->select('accounts.*', 'categories.*')
+        *    ->get();
+        */
+        return view('admin.accounts.index', compact('registers','categories'));
     }
 //
     public function add(){
-        return view('admin.accounts.add');
+        $categories = Category::all();
+        return view('admin.accounts.add',compact('categories'));
     }
 //create
     public function save(Request $req){
@@ -28,7 +36,7 @@ class AccountController extends Controller
     public function edit($id){
         $registers = Account::find($id);
         $categories = Category::all();
-        return view('admin.accounts.edit',compact('registers'));
+        return view('admin.accounts.edit',compact('registers','categories'));
     }
 //update
     public function update(Request $req, $id){

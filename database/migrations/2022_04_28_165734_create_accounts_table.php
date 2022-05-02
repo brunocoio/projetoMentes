@@ -14,10 +14,10 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('name');
-            $table->integer('category');
-            $table->integer('id_user');
+            $table->integer('category_id');
+            $table->integer('user_id');
             $table->decimal('value',5,2);
             $table->timestamps();
         });
