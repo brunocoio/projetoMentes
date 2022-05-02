@@ -10,3 +10,4 @@
 </div>
 <input type="hidden" name="name" value="{{Auth::user()->name}}">
 <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+{{dd($categories)}}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Category;
 
 class AccountController extends Controller
 {
@@ -26,6 +27,7 @@ class AccountController extends Controller
 //search
     public function edit($id){
         $registers = Account::find($id);
+        $categories = Category::all();
         return view('admin.accounts.edit',compact('registers'));
     }
 //update
