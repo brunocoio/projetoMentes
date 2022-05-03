@@ -33,7 +33,7 @@
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <a class="navbar-brand m-0" >
-        <i class="fa fa-screwdriver-wrench"></i> <span class="ms-1 font-weight-bold">Painel</span> | <i class="fa fa-user me-sm-1"></i> {{Auth::user()->name}}
+        <i class="fa fa-screwdriver-wrench"></i> <span class="ms-1 font-weight-bold">Painel</span> | <i class="fa fa-user me-sm-1"></i>{{ Auth::user() ? Auth::user()->name : '' }}
       </a>
     </div>
     <hr class="horizontal dark mt-0">
