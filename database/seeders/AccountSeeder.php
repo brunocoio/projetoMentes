@@ -16,32 +16,37 @@ class AccountSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('accounts')->insert([
+        Account::create([
             'category_id' => 1,
             'user_id' => 1,
             'value' => 100
         ]);
-        DB::table('accounts')->insert([
+        Account::create([
+            'category_id' => 1,
+            'user_id' => 1,
+            'value' => 100
+        ]);
+        Account::create([
             'category_id' => 2,
             'user_id' => 1,
             'value' => 200
         ]);
-        DB::table('accounts')->insert([
+        Account::create([
             'category_id' => 3,
             'user_id' => 1,
             'value' => 300
         ]);
-        DB::table('accounts')->insert([
+        Account::create([
             'category_id' => 4,
             'user_id' => 1,
             'value' => 400
         ]);
-        DB::table('accounts')->insert([
+        Account::create([
             'category_id' => 5,
             'user_id' => 1,
             'value' => 500
         ]);
-        DB::table('accounts')->insert([
+        Account::create([
             'category_id' => 6,
             'user_id' => 1,
             'value' => 600
