@@ -21,7 +21,7 @@
                     @foreach ($registers as $register)
                         <li class="row p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="col-9 py-2">
-                                <span> <span class="">{{$register->id}} | Valor: <span class="text-dark font-weight-bold ms-sm-2">{{$register->value}}</span></span></span>
+                                <span class="">{{$register->id}} | Valor: <span class="text-dark font-weight-bold ms-sm-2">{{$register->value}}</span> | Categoria: <span class="text-dark font-weight-bold ms-sm-2">{{$register->category->name}}</span></span>
                             </div>
                             <div class="col-3">
                                 <a class="btn btn-link {{($register->category->type == 'in')? 'text-success' : 'text-danger' }} px-3 mb-0"><i class="fa {{($register->category->type == 'in')? 'fa-arrow-trend-up' : 'fa-arrow-trend-down'}} me-2"></i></a>
