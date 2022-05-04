@@ -13,7 +13,7 @@ class UserController extends Controller
         $registers = User::paginate(5);
         return view('admin.users.index', compact('registers'));
     }
-//
+//show
     public function add(){
         return view('admin.users.add');
     }

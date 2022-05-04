@@ -22,7 +22,7 @@ class AccountController extends Controller
         */
         return view('admin.accounts.index', compact('registers','categories'));
     }
-//
+//show
     public function add(){
         $categories = Category::all();
         return view('admin.accounts.add',compact('categories'));

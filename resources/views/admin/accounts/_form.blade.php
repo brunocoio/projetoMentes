@@ -9,5 +9,4 @@
         @endforeach
     </select>
 </div>
-<input type="hidden" name="name" value="{{Auth::user()->name}}">
 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
