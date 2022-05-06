@@ -5,6 +5,7 @@ use App\Http\Controllers\Site\LoginController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
