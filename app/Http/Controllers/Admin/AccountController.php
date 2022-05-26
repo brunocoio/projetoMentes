@@ -15,11 +15,6 @@ class AccountController extends Controller
         //dd(Account::first()->category);
         $registers = Account::paginate(5);
         $categories = Category::all();
-        /**$results = DB::table('accounts')
-        *    ->join('categories', 'accounts.category_id', '=', 'categories.id')
-        *    ->select('accounts.*', 'categories.*')
-        *    ->get();
-        */
         return view('admin.accounts.index', compact('registers','categories'));
     }
 //show
