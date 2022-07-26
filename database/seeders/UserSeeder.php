@@ -15,18 +15,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         //validate user
-        $items =[
-            'name'=>"admin",
-            'email'=>"admin@admin.com.br",
-            'password'=>bcrypt("admin123"),
+        $items = [
+            'name' => "admin",
+            'email' => "admin@admin.com.br",
+            'password' => bcrypt("admin123"),
         ];
-        if (User::where('email','=',$items['email'])->count()) {
-            $user = User::where('email','=',$items['email'])->first();
+        if (User::where('email', '=', $items['email'])->count()) {
+            $user = User::where('email', '=', $items['email'])->first();
             $user->update($items);
-            echo"Usuário alterado";
+            echo "Usuário alterado";
         } else {
             User::create($items);
-            echo"Usuário gerado";
+            echo "Usuário gerado";
         }
     }
 }
