@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Index
+ */
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+/**
+ * User
+ * [V] RESOURCES > VIEWS *
+ * [V] HTTP > CONTROLLERS > UserController
+ * [V] APP > MODELS > User
+ * [X] DATABASE > MIGRATIONS *
+ */
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/users/add', [UserController::class, 'add'])->name('users.add');
+Route::post('/users/save', [UserController::class, 'save'])->name('users.save');
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->where('id', '[0-9]+');
+Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update')->where('id', '[0-9]+');
+Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete')->where('id', '[0-9]+');
