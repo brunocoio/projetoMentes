@@ -1,5 +1,5 @@
 <?php
-class DefaultModel
+class AddressModel
 {
   private $attributes;
   /**
@@ -37,7 +37,7 @@ class DefaultModel
   {
     $columns = $this->validate($this->attributes);
     if (!isset($this->id)) {
-      $query = "INSERT INTO users (" .
+      $query = "INSERT INTO addresses (" .
         implode(', ', array_keys($columns)) .
         ") VALUES (" .
         implode(', ', array_values($columns)) . ");";
@@ -62,7 +62,7 @@ class DefaultModel
           $definir[] = "{$key}={$value}";
         }
       }
-      $query = "UPDATE users SET " . implode(', ', $definir) . " WHERE id='{$this->id}';";
+      $query = "UPDATE addresses SET " . implode(', ', $definir) . " WHERE id='{$this->id}';";
     }
     if ($connect = Connect::getInstance()) {
       $stmt = $connect->prepare($query);
@@ -109,7 +109,7 @@ class DefaultModel
     $stmt = $connect->prepare("SELECT * FROM $tb;");
     $result = array();
     if ($stmt->execute()) {
-      while ($rs = $stmt->fetchObject(DefaultModel::class)) {
+      while ($rs = $stmt->fetchObject(AddressModel::class)) {
         $result[] = $rs;
       }
     }
@@ -124,7 +124,7 @@ class DefaultModel
   public static function count()
   {
     $connect = Connect::getInstance();
-    $count = $connect->exec("SELECT count(*) FROM users;");
+    $count = $connect->exec("SELECT count(*) FROM addresses;");
     if ($count) {
       return (int) $count;
     }
@@ -136,10 +136,10 @@ class DefaultModel
   public static function find($id)
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM users WHERE id='{$id}';");
+    $stmt = $connect->prepare("SELECT * FROM addresses WHERE id='{$id}';");
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
-        $result = $stmt->fetchObject('DefaultModel');
+        $result = $stmt->fetchObject('AddressModel');
         if ($result) {
           return $result;
         }
@@ -153,7 +153,7 @@ class DefaultModel
   public static function destroy($id)
   {
     $connect = Connect::getInstance();
-    if ($connect->exec("DELETE FROM users WHERE id='{$id}';")) {
+    if ($connect->exec("DELETE FROM addresses WHERE id='{$id}';")) {
       return true;
     }
     return false;

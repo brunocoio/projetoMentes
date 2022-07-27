@@ -4,8 +4,14 @@ ini_set('display_errors', true);
 require_once __DIR__ . '../../db/Request.php';
 require_once __DIR__ . '../../db/Connect.php';
 require_once __DIR__ . '../../controller/Controller.php';
-require_once __DIR__ . '../../controller/DefaultController.php';
-require_once __DIR__ . '../../model/DefaultModel.php';
+require_once __DIR__ . '../../controller/UserController.php';
+require_once __DIR__ . '../../model/UserModel.php';
+require_once __DIR__ . '../../controller/StateController.php';
+require_once __DIR__ . '../../model/StateModel.php';
+require_once __DIR__ . '../../controller/CityController.php';
+require_once __DIR__ . '../../model/CityModel.php';
+require_once __DIR__ . '../../controller/AddressController.php';
+require_once __DIR__ . '../../model/AddressModel.php';
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -34,7 +40,7 @@ require_once __DIR__ . '../../model/DefaultModel.php';
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?controller=DefaultController&method=read">Listar</a>
+          <a class="nav-link" href="?controller=UserController&method=read">Listar</a>
         </li>
       </ul>
     </div>

@@ -1,14 +1,14 @@
 <?php
 
-class StateController extends Controller
+class AddressController extends Controller
 {
   /**
    * list regs
    */
   public function read()
   {
-    $states = StateModel::all('states');
-    return ['states' => $states];
+    $addresses = AddressModel::all('addresses');
+    return ['addresses' => $addresses];
   }
   /**
    * show regs to create
@@ -23,7 +23,7 @@ class StateController extends Controller
   public function show($value)
   {
     $id = (int) $value['id'];
-    $reg = StateModel::find($id);
+    $reg = AddressModel::find($id);
 
     return $this->view('form', ['reg' => $reg]);
   }

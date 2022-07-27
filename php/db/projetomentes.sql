@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Jul-2022 às 22:32
+-- Tempo de geração: 27-Jul-2022 às 20:36
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 7.4.22
 
@@ -37,6 +37,17 @@ CREATE TABLE `addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `city_id`, `state_id`, `numeral`, `address`, `zipcode`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '22', 'end', '13330000', NULL, NULL),
+(2, 1, 1, '22', 'end', '13330000', NULL, NULL),
+(3, 1, 1, '22', 'end', '13330000', NULL, NULL),
+(4, 1, 1, '22', 'end', '13330000', NULL, NULL),
+(5, 11, 7, '66', 'end6', '13330006', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -211,6 +222,7 @@ INSERT INTO `states` (`id`, `name`, `acronym`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `address_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -219,6 +231,17 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `address_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 1, 'teste', 'marketing@combatarmordefense.com.br', NULL, '123', NULL, NULL, NULL),
+(8, 2, 'teste', 'admin@admin.com.br', NULL, '123654', NULL, NULL, NULL),
+(11, 3, 'testes', 'marketing@combatarmordefense.com.brs', NULL, '2233223', NULL, NULL, NULL),
+(12, 4, 'testes', 'web@combatarmordefense.com.br', NULL, '5236541', NULL, NULL, NULL),
+(13, 5, 'testeg', 'admin2@admin.com.br', NULL, '1234566', NULL, NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -284,7 +307,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `cities`
@@ -320,7 +343,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

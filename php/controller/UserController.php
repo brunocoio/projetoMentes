@@ -1,13 +1,13 @@
 <?php
 
-class DefaultController extends Controller
+class UserController extends Controller
 {
   /**
    * list regs
    */
   public function read()
   {
-    $regs = DefaultModel::all('users');
+    $regs = UserModel::all('users');
     return $this->view('home', ['regs' => $regs]);
   }
   /**
@@ -23,7 +23,7 @@ class DefaultController extends Controller
   public function show($value)
   {
     $id = (int) $value['id'];
-    $reg = DefaultModel::find($id);
+    $reg = UserModel::find($id);
 
     return $this->view('form', ['reg' => $reg]);
   }
@@ -32,12 +32,20 @@ class DefaultController extends Controller
    */
   public function create()
   {
-    $reg = new DefaultModel;
+    $reg = new UserModel;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
 
-    if ($reg->showall()) {
+    $address = new AddressModel;
+    //$address->address_id = $this->request->address_id; ????????
+    $address->city_id = $this->request->city_id;
+    $address->state_id = $this->request->state_id;
+    $address->numeral = $this->request->numeral;
+    $address->address = $this->request->address;
+    $address->zipcode = $this->request->zipcode;
+
+    if ($reg->showall() && $address->showall()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
@@ -49,12 +57,20 @@ class DefaultController extends Controller
   public function update($value)
   {
     $id = (int) $value['id'];
-    $reg = DefaultModel::find($id);
+    $reg = UserModel::find($id);
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
 
-    if ($reg->save()) {
+    $address = new AddressModel;
+    $address->address_id = $id;
+    $address->city_id = $this->request->city_id;
+    $address->state_id = $this->request->state_id;
+    $address->numeral = $this->request->numeral;
+    $address->address = $this->request->address;
+    $address->zipcode = $this->request->zipcode;
+
+    if ($reg->save() && $address->save()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
@@ -67,7 +83,7 @@ class DefaultController extends Controller
   {
     $id = (int) $value['id'];
 
-    if ($reg = DefaultModel::destroy($id)) {
+    if ($reg = UserModel::destroy($id)) {
       print json_encode("Registro removido com sucesso!");
       return $this->read();
     }
