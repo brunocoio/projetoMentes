@@ -7,7 +7,7 @@ class DefaultController extends Controller
    */
   public function read()
   {
-    $regs = DefaultModel::all();
+    $regs = DefaultModel::all('users');
     return $this->view('home', ['regs' => $regs]);
   }
   /**

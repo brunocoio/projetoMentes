@@ -1,5 +1,5 @@
 <?php
-class DefaultModel
+class StateModel
 {
   private $attributes;
   /**
@@ -29,48 +29,6 @@ class DefaultModel
   public function __isset($attribute)
   {
     return isset($this->attributes[$attribute]);
-  }
-  /**
-   * insert reg
-   */
-  public function showall()
-  {
-    $columns = $this->validate($this->attributes);
-    if (!isset($this->id)) {
-      $query = "INSERT INTO users (" .
-        implode(', ', array_keys($columns)) .
-        ") VALUES (" .
-        implode(', ', array_values($columns)) . ");";
-    }
-    if ($connect = Connect::getInstance()) {
-      $stmt = $connect->prepare($query);
-      if ($stmt->execute()) {
-        return $stmt->rowCount();
-      }
-    }
-    return false;
-  }
-  /**
-   * save reg
-   */
-  public function save()
-  {
-    $columns = $this->validate($this->attributes);
-    if (isset($this->id)) {
-      foreach ($columns as $key => $value) {
-        if ($key !== 'id') {
-          $definir[] = "{$key}={$value}";
-        }
-      }
-      $query = "UPDATE users SET " . implode(', ', $definir) . " WHERE id='{$this->id}';";
-    }
-    if ($connect = Connect::getInstance()) {
-      $stmt = $connect->prepare($query);
-      if ($stmt->execute()) {
-        return $stmt->rowCount();
-      }
-    }
-    return false;
   }
   /**
    * val regs sintax
@@ -109,7 +67,7 @@ class DefaultModel
     $stmt = $connect->prepare("SELECT * FROM $tb;");
     $result = array();
     if ($stmt->execute()) {
-      while ($rs = $stmt->fetchObject(DefaultModel::class)) {
+      while ($rs = $stmt->fetchObject(StateModel::class)) {
         $result[] = $rs;
       }
     }
@@ -124,7 +82,7 @@ class DefaultModel
   public static function count()
   {
     $connect = Connect::getInstance();
-    $count = $connect->exec("SELECT count(*) FROM users;");
+    $count = $connect->exec("SELECT count(*) FROM states;");
     if ($count) {
       return (int) $count;
     }
@@ -136,25 +94,14 @@ class DefaultModel
   public static function find($id)
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM users WHERE id='{$id}';");
+    $stmt = $connect->prepare("SELECT * FROM states WHERE id='{$id}';");
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
-        $result = $stmt->fetchObject('DefaultModel');
+        $result = $stmt->fetchObject('StateModel');
         if ($result) {
           return $result;
         }
       }
-    }
-    return false;
-  }
-  /**
-   * detroy by id
-   */
-  public static function destroy($id)
-  {
-    $connect = Connect::getInstance();
-    if ($connect->exec("DELETE FROM users WHERE id='{$id}';")) {
-      return true;
     }
     return false;
   }
