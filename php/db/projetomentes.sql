@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jul-2022 às 21:25
+-- Tempo de geração: 27-Jul-2022 às 22:09
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 7.4.22
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `addresses` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
   `numeral` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -43,12 +42,12 @@ CREATE TABLE `addresses` (
 -- Extraindo dados da tabela `addresses`
 --
 
-INSERT INTO `addresses` (`id`, `user_id`, `city_id`, `state_id`, `numeral`, `address`, `zipcode`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, 1, '11', 'endereço 1', '13330001', NULL, NULL),
-(2, 8, 2, 2, '22', 'endereço 2', '13330002', NULL, NULL),
-(3, 11, 3, 3, '33', 'endereço 3', '13330003', NULL, NULL),
-(4, 12, 4, 4, '44', 'endereço 4', '13330004', NULL, NULL),
-(5, 13, 11, 11, '55', 'endereço 5', '13330005', NULL, NULL);
+INSERT INTO `addresses` (`id`, `city_id`, `state_id`, `numeral`, `address`, `zipcode`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '11', 'endereço 1', '13330001', NULL, NULL),
+(2, 2, 2, '22', 'endereço 2', '13330002', NULL, NULL),
+(3, 3, 3, '33', 'endereço 3', '13330003', NULL, NULL),
+(4, 4, 4, '44', 'endereço 4', '13330004', NULL, NULL),
+(5, 11, 11, '55', 'endereço 5', '13330005', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -223,6 +222,7 @@ INSERT INTO `states` (`id`, `name`, `acronym`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `address_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -236,12 +236,12 @@ CREATE TABLE `users` (
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'teste', 'marketing@combatarmordefense.com.br', NULL, '123', NULL, NULL, NULL),
-(8, 'teste', 'admin@admin.com.br', NULL, '123654', NULL, NULL, NULL),
-(11, 'testes', 'marketing@combatarmordefense.com.brs', NULL, '2233223', NULL, NULL, NULL),
-(12, 'testes', 'web@combatarmordefense.com.br', NULL, '5236541', NULL, NULL, NULL),
-(13, 'testeg', 'admin2@admin.com.br', NULL, '1234566', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `address_id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 1, 'teste', 'marketing@combatarmordefense.com.br', NULL, '123', NULL, NULL, NULL),
+(8, 2, 'teste', 'admin@admin.com.br', NULL, '123654', NULL, NULL, NULL),
+(11, 3, 'testes', 'marketing@combatarmordefense.com.brs', NULL, '2233223', NULL, NULL, NULL),
+(12, 4, 'testes', 'web@combatarmordefense.com.br', NULL, '5236541', NULL, NULL, NULL),
+(13, 5, 'testeg', 'admin2@admin.com.br', NULL, '1234566', NULL, NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -307,7 +307,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `cities`
@@ -343,7 +343,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
