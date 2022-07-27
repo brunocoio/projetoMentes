@@ -7,7 +7,7 @@ class UserController extends Controller
    */
   public function read()
   {
-    $regs = UserModel::all('users');
+    $regs = UserModel::all();
     return $this->view('home', ['regs' => $regs]);
   }
   /**
@@ -56,22 +56,25 @@ class UserController extends Controller
    */
   public function update($value)
   {
+    $address = new AddressModel;
+
+    $address->city_id = $this->request->city_id;
+    $address->state_id = $this->request->state_id;
+    $address->numeral = $this->request->numeral;
+    $address->address = $this->request->address;
+    $address->zipcode = $this->request->zipcode;
+    $address->save();
+
     $id = (int) $value['id'];
     $reg = UserModel::find($id);
+    $reg->address_id = $address->id;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
 
-    // $address = new AddressModel;
-    // $address->user_id = $id;
-    // $address->city_id = $this->request->city_id;
-    // $address->state_id = $this->request->state_id;
-    // $address->numeral = $this->request->numeral;
-    // $address->address = $this->request->address;
-    // $address->zipcode = $this->request->zipcode;
+
 
     if ($reg->save()) {
-      // if ($reg->save() && $address->save()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }

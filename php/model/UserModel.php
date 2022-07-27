@@ -103,10 +103,10 @@ class UserModel
   /**
    * list
    */
-  public static function all($tb)
+  public static function all()
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM $tb;");
+    $stmt = $connect->prepare("SELECT * FROM users;");
     $result = array();
     if ($stmt->execute()) {
       while ($rs = $stmt->fetchObject(UserModel::class)) {
@@ -136,7 +136,7 @@ class UserModel
   public static function find($id)
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM `users` AS User LEFT JOIN `addresses` AS Addr ON User.id = Addr.user_id WHERE User.id = '{$id}';");
+    $stmt = $connect->prepare("SELECT * FROM `users` AS User LEFT JOIN `addresses` AS Addr ON User.address_id = Addr.id WHERE User.id = '{$id}';");
     //$stmt = $connect->prepare("SELECT * FROM users WHERE id='{$id}';");
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
