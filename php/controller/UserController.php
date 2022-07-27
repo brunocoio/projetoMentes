@@ -38,7 +38,7 @@ class UserController extends Controller
     $reg->password = $this->request->password;
 
     $address = new AddressModel;
-    //$address->address_id = $this->request->address_id; ????????
+    //$address->user_id = $this->request->user_id; ????????
     $address->city_id = $this->request->city_id;
     $address->state_id = $this->request->state_id;
     $address->numeral = $this->request->numeral;
@@ -63,7 +63,7 @@ class UserController extends Controller
     $reg->password = $this->request->password;
 
     $address = new AddressModel;
-    $address->address_id = $id;
+    $address->user_id = $id;
     $address->city_id = $this->request->city_id;
     $address->state_id = $this->request->state_id;
     $address->numeral = $this->request->numeral;
