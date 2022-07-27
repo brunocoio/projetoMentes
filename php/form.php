@@ -14,7 +14,7 @@
         <input type="text" class="form-control col-sm-8" name="password" id="password" value="<?= isset($reg->password) ? $reg->password : null; ?>" required />
       </div>
       <!--  -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="form-group">Estado</label>
         <select class="form-control" id="state_id" name="state_id">
           <option value="1" <?= (isset($reg->state_id) && ($reg->state_id === '1')) ? "selected='selected'" : null; ?>> Acre</option>
@@ -45,12 +45,12 @@
           <option value="26" <?= (isset($reg->state_id) && ($reg->state_id === '26')) ? "selected='selected'" : null; ?>> Sergipe</option>
           <option value="27" <?= (isset($reg->state_id) && ($reg->state_id === '27')) ? "selected='selected'" : null; ?>> Tocantins</option>
         </select>
-      </div>
+      </div> -->
       <!--  -->
 
       <!--  -->
-      <div class="form-group">
-        <label for="form-group">Cidade <?= isset($reg->city_id) ? $reg->city_id : null; ?></label>
+      <!-- <div class="form-group">
+        <label for="form-group">Cidade</label>
         <select class="form-control" id="city_id" name="city_id">
           <option value="1" <?= (isset($reg->city_id) && ($reg->city_id === '1')) ? "selected='selected'" : null; ?>>Rio Branco</option>
           <option value="2" <?= (isset($reg->city_id) && ($reg->city_id === '2')) ? "selected='selected'" : null; ?>> Maceió</option>
@@ -80,11 +80,11 @@
           <option value="26" <?= (isset($reg->city_id) && ($reg->city_id === '26')) ? "selected='selected'" : null; ?>> Aracajú</option>
           <option value="27" <?= (isset($reg->city_id) && ($reg->city_id === '27')) ? "selected='selected'" : null; ?>> Palmas</option>
         </select>
-      </div>
+      </div> -->
       <!--  -->
 
       <!--  -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="numeral">Número:</label>
         <input type="text" class="form-control col-sm-8" name="numeral" id="numeral" value="<?= isset($reg->numeral) ? $reg->numeral : null; ?>" required />
       </div>
@@ -95,7 +95,7 @@
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="zipcode">CEP:</label>
         <input type="text" class="form-control col-sm-8" name="zipcode" id="zipcode" value="<?= isset($reg->zipcode) ? $reg->zipcode : null; ?>" required />
-      </div>
+      </div> -->
       <!--  -->
       <div class="form-group my-2">
         <input type="hidden" name="id" id="id" value="<?= isset($reg->id) ? $reg->id : null; ?>" />

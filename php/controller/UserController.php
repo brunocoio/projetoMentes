@@ -62,15 +62,16 @@ class UserController extends Controller
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
 
-    $address = new AddressModel;
-    $address->user_id = $id;
-    $address->city_id = $this->request->city_id;
-    $address->state_id = $this->request->state_id;
-    $address->numeral = $this->request->numeral;
-    $address->address = $this->request->address;
-    $address->zipcode = $this->request->zipcode;
+    // $address = new AddressModel;
+    // $address->user_id = $id;
+    // $address->city_id = $this->request->city_id;
+    // $address->state_id = $this->request->state_id;
+    // $address->numeral = $this->request->numeral;
+    // $address->address = $this->request->address;
+    // $address->zipcode = $this->request->zipcode;
 
-    if ($reg->save() && $address->save()) {
+    if ($reg->save()) {
+      // if ($reg->save() && $address->save()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
