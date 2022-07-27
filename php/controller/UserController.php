@@ -56,23 +56,22 @@ class UserController extends Controller
    */
   public function update($value)
   {
-    $address = new AddressModel;
+    // $address = new AddressModel;
 
-    $address->city_id = $this->request->city_id;
-    $address->state_id = $this->request->state_id;
-    $address->numeral = $this->request->numeral;
-    $address->address = $this->request->address;
-    $address->zipcode = $this->request->zipcode;
-    $address->save();
+    // $address->city_id = $this->request->city_id;
+    // $address->state_id = $this->request->state_id;
+    // $address->numeral = $this->request->numeral;
+    // $address->address = $this->request->address;
+    // $address->zipcode = $this->request->zipcode;
+    // $address->save();
 
     $id = (int) $value['id'];
     $reg = UserModel::find($id);
-    $reg->address_id = $address->id;
+    //var_dump($reg);
+    // $reg->address_id = $address->id;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
-
-
 
     if ($reg->save()) {
       print json_encode("Registro salvo com sucesso!");

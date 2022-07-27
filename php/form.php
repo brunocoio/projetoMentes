@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container"><?= var_dump($reg) ?>
   <form action="?controller=UserController&<?= isset($reg->id) ? "method=update&id={$reg->id}" : "method=create"; ?>" method="post">
-    <div class="form-group">
+    <div class="form-group"><?= isset($reg->id) ? $reg->id : null; ?>
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="name">Nome:</label>
         <input type="text" class="form-control col-sm-8" name="name" id="name" value="<?= isset($reg->name) ? $reg->name : null; ?>" required />
