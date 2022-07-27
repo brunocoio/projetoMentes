@@ -33,7 +33,7 @@ class AddressModel
   /**
    * insert reg
    */
-  public function showall()
+  public function insert()
   {
     $columns = $this->validate($this->attributes);
     if (!isset($this->id)) {

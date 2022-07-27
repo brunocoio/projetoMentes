@@ -45,7 +45,7 @@ class UserController extends Controller
     $address->address = $this->request->address;
     $address->zipcode = $this->request->zipcode;
 
-    if ($reg->showall() && $address->showall()) {
+    if ($reg->insert() && $address->insert()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
