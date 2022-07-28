@@ -1,28 +1,28 @@
 ## Sobre o projeto Mentes Notáveis
 
-Projeto desenvolvido com intúito de cadastrar um usuário apresentando opções de endereço.
+Projeto desenvolvido com intúito de cadastrar um usuário apresentando opções de endereço.<br>
 CRUD de Usuário.
 
 ## Execução
 
-Desenvolvimento em PHP puro aplicando:
-POO
-MVC
+Desenvolvimento em PHP puro aplicando:<br>
+POO<br>
+MVC<br>
 Formatação/Indentação
 
 ## Banco de Dados
 
-Estrutura desenvolvida para MySql
-O arquivo SQL se encontra na pasta DB, onde já apresenta:
-Cadastros de Cidades;
-Cadastros de Estados;
-Cadastros de Endereços;
+Estrutura desenvolvida para MySql<br>
+O arquivo SQL se encontra na pasta DB, onde já apresenta:<br>
+Cadastros de Cidades;<br>
+Cadastros de Estados;<br>
+Cadastros de Endereços;<br>
 Cadastros de Usuários;
 
 ## Observações
 
-Aprendizado foi muito grande, pois estava desacostumado a desenvolver um projeto do 'ZERO'.
-Agradeço a oportunidade e ...
+Aprendizado foi muito grande, pois estava desacostumado a desenvolver um projeto do 'ZERO'.<br>
+Agradeço a oportunidade e ...<br>
 'Aprender Sempre!'
 
 ## License
