@@ -1,3 +1,7 @@
+<div align="center">
+    <a href="https://php.net"><img alt="PHP" src="https://www.php.net/images/logos/new-php-logo.svg" width="150"></a>
+</div>
+
 ## Sobre o projeto Mentes Notáveis
 
 Projeto desenvolvido com intúito de cadastrar um usuário apresentando opções de endereço.<br>
