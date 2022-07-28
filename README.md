@@ -1,8 +1,8 @@
 <div align="center">
-    <a target="_blank" href="https://www.mentesnotaveis.com.br"><img alt="MySql" src="https://www.mentesnotaveis.com.br/assets/img/logo.png" width="150"></a>
+    <a target="_blank" href="https://www.mentesnotaveis.com.br"><img alt="MySql" src="https://www.mentesnotaveis.com.br/assets/img/logo.png" width="50"></a>
 </div>
 
-## Projeto Mentes Notáveis
+## Projeto desenvolvido para avaliação do grupo Mentes Notáveis
 
 Projeto desevolvido para análise da equipe Mentes Notáveis.
 
