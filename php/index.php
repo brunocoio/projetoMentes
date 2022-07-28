@@ -16,6 +16,20 @@
     } else {
       echo "Controller não encontrado!";
     }
+  }else{
+    ?>
+    <div class='container'>
+      <div class='row mx-auto text-center'>
+        <p class="text-center">Para acessar os registros ou criar novos, favor clicar no menu <span class="text-info">Listar</span> acima.</p>
+      </div>
+    </div>
+    <?php
   }
-
+  ?>  
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <p class="text-muted text-center">Desenvolvido por <a class="text-dark" href="mailto:web.bruno@gmail.com">Bruno Depieri Barduchi</a>.</p>
+    </div>
+  </footer>  
+  <?php
   require_once __DIR__ . '/view/footer.php';

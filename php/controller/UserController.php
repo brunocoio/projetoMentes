@@ -36,16 +36,9 @@ class UserController extends Controller
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
+    $reg->address_id = $this->request->address_id;
 
-    $address = new AddressModel;
-    //$address->user_id = $this->request->user_id; ????????
-    $address->city_id = $this->request->city_id;
-    $address->state_id = $this->request->state_id;
-    $address->numeral = $this->request->numeral;
-    $address->address = $this->request->address;
-    $address->zipcode = $this->request->zipcode;
-
-    if ($reg->insert() && $address->insert()) {
+    if ($reg->insert()) {
       print json_encode("Registro salvo com sucesso!");
       return $this->read();
     }
@@ -56,19 +49,9 @@ class UserController extends Controller
    */
   public function update($value)
   {
-    // $address = new AddressModel;
-
-    // $address->city_id = $this->request->city_id;
-    // $address->state_id = $this->request->state_id;
-    // $address->numeral = $this->request->numeral;
-    // $address->address = $this->request->address;
-    // $address->zipcode = $this->request->zipcode;
-    // $address->save();
-
     $id = (int) $value['id'];
     $reg = UserModel::find($id);
-    //var_dump($reg);
-    // $reg->address_id = $address->id;
+    $reg->address_id = $this->request->address_id;
     $reg->name = $this->request->name;
     $reg->email = $this->request->email;
     $reg->password = $this->request->password;
@@ -91,5 +74,20 @@ class UserController extends Controller
       return $this->read();
     }
     print json_encode("Erro ao removido o registro!");
+  }
+  /**
+   * show radio
+   */
+  public function showRadio($user){   
+    $usr = $user; 
+    if($usr != 0){
+      if ($reg = UserModel::updateRadio($usr)) {
+        return $reg;
+      }
+    }else{
+      if ($reg = UserModel::createRadio()) {
+        return $reg;
+      }
+    }
   }
 }

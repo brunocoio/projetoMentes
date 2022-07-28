@@ -59,10 +59,17 @@ class UserModel
     if (isset($this->id)) {
       foreach ($columns as $key => $value) {
         if ($key !== 'id') {
-          $definir[] = "{$key}={$value}";
+          $items[] = "{$key}={$value}";
         }
       }
-      $query = "UPDATE users SET " . implode(', ', $definir) . " WHERE id='{$this->id}';";
+      //clear itens
+      unset($items[4]);
+      unset($items[5]);
+      unset($items[6]);
+      unset($items[7]);
+      unset($items[8]);
+      unset($items[9]);
+      $query = "UPDATE users SET " . implode(', ', $items) . " WHERE id='{$this->id}';";
     }
     if ($connect = Connect::getInstance()) {
       $stmt = $connect->prepare($query);
@@ -136,7 +143,7 @@ class UserModel
   public static function find($id)
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM users AS User LEFT JOIN addresses AS Addr ON User.address_id = Addr.id WHERE User.id = '{$id}';");
+    $stmt = $connect->prepare("SELECT * FROM users AS User LEFT JOIN addresses AS Addr ON User.address_id = Addr.id_address WHERE User.id = '{$id}';");
     //$stmt = $connect->prepare("SELECT * FROM users WHERE id='{$id}';");
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
@@ -156,6 +163,61 @@ class UserModel
     $connect = Connect::getInstance();
     if ($connect->exec("DELETE FROM users WHERE id='{$id}';")) {
       return true;
+    }
+    return false;
+  }
+  /**
+   * update Radio
+   */
+  public static function updateRadio($usr)
+  {
+    $connect = Connect::getInstance();
+    $stmt = $connect->prepare(" SELECT * FROM addresses INNER JOIN cities ON addresses.city_id = cities.id_cities INNER JOIN states ON addresses.state_id = states.id_states;");
+    $result = array();
+    if ($stmt->execute()) {
+      while ($rs = $stmt->fetchObject(UserModel::class)) {
+        $check = (isset($rs->id_address) && ($rs->id_address === $usr)) ? 'checked' : null;
+        echo "
+        <div class='form-check border border-light rounded'>
+          <input class='form-check-input' type='radio' name='address_id' id='address_id' value='$rs->id_address' {$check}>
+          <label class='form-check-label' for='$rs->id_address'>
+            End: {$rs->address}<br />
+            N: {$rs->numeral} | CEP: {$rs->zipcode}<br />
+            Cidade: {$rs->name_cities} | Estado: {$rs->name_states}<br />
+          </label>
+        </div>
+        ";
+      }
+    }
+    if (count($result) > 0) {
+      return $result;
+    }
+    return false;
+  }
+  /**
+   * create Radio
+   */
+  public static function createRadio()
+  {
+    $connect = Connect::getInstance();
+    $stmt = $connect->prepare(" SELECT * FROM addresses INNER JOIN cities ON addresses.city_id = cities.id_cities INNER JOIN states ON addresses.state_id = states.id_states;");
+    $result = array();
+    if ($stmt->execute()) {
+      while ($rs = $stmt->fetchObject(UserModel::class)) {
+        echo "
+        <div class='form-check border border-light rounded'>
+          <input class='form-check-input' type='radio' name='address_id' id='address_id' value='$rs->id_address'>
+          <label class='form-check-label' for='$rs->id_address'>
+            End: {$rs->address}<br />
+            N: {$rs->numeral} | CEP: {$rs->zipcode}<br />
+            Cidade: {$rs->name_cities} | Estado: {$rs->name_states}<br />
+          </label>
+        </div>
+        ";
+      }
+    }
+    if (count($result) > 0) {
+      return $result;
     }
     return false;
   }

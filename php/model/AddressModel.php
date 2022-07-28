@@ -59,10 +59,10 @@ class AddressModel
     if (isset($this->id)) {
       foreach ($columns as $key => $value) {
         if ($key !== 'id') {
-          $definir[] = "{$key}={$value}";
+          $items[] = "{$key}={$value}";
         }
       }
-      $query = "UPDATE addresses SET " . implode(', ', $definir) . " WHERE id='{$this->id}';";
+      $query = "UPDATE addresses SET " . implode(', ', $items) . " WHERE id='{$this->id}';";
     }
     if ($connect = Connect::getInstance()) {
       $stmt = $connect->prepare($query);

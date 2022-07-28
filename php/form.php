@@ -1,6 +1,6 @@
-<div class="container"><?= var_dump($reg) ?>
+<div class="container">
   <form action="?controller=UserController&<?= isset($reg->id) ? "method=update&id={$reg->id}" : "method=create"; ?>" method="post">
-    <div class="form-group"><?= isset($reg->id) ? $reg->id : null; ?>
+    <div class="form-group">
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="name">Nome:</label>
         <input type="text" class="form-control col-sm-8" name="name" id="name" value="<?= isset($reg->name) ? $reg->name : null; ?>" required />
@@ -12,6 +12,10 @@
       <div class="form-group">
         <label class="col-sm-2 col-form-label text-right" for="password">Password:</label>
         <input type="text" class="form-control col-sm-8" name="password" id="password" value="<?= isset($reg->password) ? $reg->password : null; ?>" required />
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 col-form-label text-right" for="password">Password:</label>
+        <?= isset($reg->address_id)? UserController::showRadio($reg->address_id) : UserController::showRadio(0); ?>
       </div>
       <!--  -->
       <!-- <div class="form-group">
@@ -105,6 +109,3 @@
     </div>
   </form>
 </div>
-<?php
-var_dump($reg)
-?>
