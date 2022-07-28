@@ -10,6 +10,7 @@ class StateController extends Controller
     $states = StateModel::all('states');
     return ['states' => $states];
   }
+
   /**
    * show regs to create
    */
@@ -17,6 +18,7 @@ class StateController extends Controller
   {
     return $this->view('form');
   }
+
   /**
    * show regs to edit
    */

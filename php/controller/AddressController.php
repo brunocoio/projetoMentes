@@ -10,6 +10,7 @@ class AddressController extends Controller
     $addresses = AddressModel::all('addresses');
     return ['addresses' => $addresses];
   }
+
   /**
    * show regs to create
    */
@@ -17,6 +18,7 @@ class AddressController extends Controller
   {
     return $this->view('form');
   }
+
   /**
    * show regs to edit
    */

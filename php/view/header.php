@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
+
 require_once __DIR__ . '../../db/Request.php';
 require_once __DIR__ . '../../db/Connect.php';
 require_once __DIR__ . '../../controller/Controller.php';
@@ -12,6 +13,7 @@ require_once __DIR__ . '../../controller/CityController.php';
 require_once __DIR__ . '../../model/CityModel.php';
 require_once __DIR__ . '../../controller/AddressController.php';
 require_once __DIR__ . '../../model/AddressModel.php';
+
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -48,4 +50,3 @@ require_once __DIR__ . '../../model/AddressModel.php';
 </nav>
 
 <body>
-  <!-- Optional JavaScript; choose one of the two! -->

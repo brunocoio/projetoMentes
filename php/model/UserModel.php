@@ -8,14 +8,17 @@ class UserModel
   public function __construct()
   {
   }
+
   /**
    * set regs
    */
   public function __set(string $attribute, $val)
   {
     $this->attributes[$attribute] = $val;
+
     return $this;
   }
+
   /**
    * get regs
    */
@@ -23,6 +26,7 @@ class UserModel
   {
     return $this->attributes[$attribute];
   }
+
   /**
    * isset regs
    */
@@ -30,55 +34,78 @@ class UserModel
   {
     return isset($this->attributes[$attribute]);
   }
+
+  /**
+   * list
+   */
+  public static function all()
+  {
+    $connect = Connect::getInstance();
+    $stmt = $connect->prepare("SELECT * FROM users;");
+    $result = array();
+    if ($stmt->execute()) {
+      while ($rs = $stmt->fetchObject(UserModel::class)) {
+        $result[] = $rs;
+      }
+    }
+
+    if (count($result) > 0) {
+      return $result;
+    }
+
+    return false;
+  }
   /**
    * insert reg
    */
   public function insert()
   {
     $columns = $this->validate($this->attributes);
+
     if (!isset($this->id)) {
       $query = "INSERT INTO users (" .
-        implode(', ', array_keys($columns)) .
-        ") VALUES (" .
-        implode(', ', array_values($columns)) . ");";
+        implode(', ', array_keys($columns)) . ") VALUES (" . implode(', ', array_values($columns)) . ");";
     }
+
     if ($connect = Connect::getInstance()) {
       $stmt = $connect->prepare($query);
+
       if ($stmt->execute()) {
         return $stmt->rowCount();
       }
     }
+
     return false;
   }
+
   /**
    * save reg
    */
   public function save()
   {
-    $columns = $this->validate($this->attributes);
-    if (isset($this->id)) {
-      foreach ($columns as $key => $value) {
-        if ($key !== 'id') {
-          $items[] = "{$key}={$value}";
-        }
-      }
-      //clear itens
-      unset($items[4]);
-      unset($items[5]);
-      unset($items[6]);
-      unset($items[7]);
-      unset($items[8]);
-      unset($items[9]);
-      $query = "UPDATE users SET " . implode(', ', $items) . " WHERE id='{$this->id}';";
+    if (!isset($this->id)) {
+      return false;
     }
+
+    $query = "UPDATE users SET 
+      address_id = $this->address_id, 
+      name = '$this->name', 
+      email = '$this->email', 
+      password = '$this->password' 
+    WHERE 
+      id='{$this->id}';";
+
     if ($connect = Connect::getInstance()) {
       $stmt = $connect->prepare($query);
+
       if ($stmt->execute()) {
         return $stmt->rowCount();
       }
     }
+
     return false;
   }
+
   /**
    * val regs sintax
    */
@@ -94,6 +121,7 @@ class UserModel
       return 'NULL';
     }
   }
+
   /**
    * validate regs
    */
@@ -107,24 +135,7 @@ class UserModel
     }
     return $result;
   }
-  /**
-   * list
-   */
-  public static function all()
-  {
-    $connect = Connect::getInstance();
-    $stmt = $connect->prepare("SELECT * FROM users;");
-    $result = array();
-    if ($stmt->execute()) {
-      while ($rs = $stmt->fetchObject(UserModel::class)) {
-        $result[] = $rs;
-      }
-    }
-    if (count($result) > 0) {
-      return $result;
-    }
-    return false;
-  }
+
   /**
    * count regs
    */
@@ -135,6 +146,7 @@ class UserModel
     if ($count) {
       return (int) $count;
     }
+
     return false;
   }
   /**
@@ -144,7 +156,7 @@ class UserModel
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM users AS User LEFT JOIN addresses AS Addr ON User.address_id = Addr.id_address WHERE User.id = '{$id}';");
-    //$stmt = $connect->prepare("SELECT * FROM users WHERE id='{$id}';");
+
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
         $result = $stmt->fetchObject('UserModel');
@@ -153,8 +165,10 @@ class UserModel
         }
       }
     }
+
     return false;
   }
+
   /**
    * detroy by id
    */
@@ -164,16 +178,60 @@ class UserModel
     if ($connect->exec("DELETE FROM users WHERE id='{$id}';")) {
       return true;
     }
+
     return false;
   }
+
+  /**
+   * list state
+   */
+  public static function getUsersByState($stateId)
+  {
+    $connect = Connect::getInstance();
+
+    $stmt = $connect->prepare("
+      select count(users.id) AS countUsers from users 
+      INNER JOIN addresses ON (addresses.id_address = users.address_id)
+      INNER JOIN cities ON (addresses.city_id = cities.id_cities)
+      INNER JOIN states ON (cities.state_id = states.id_states)
+      where states.id_states = $stateId;");
+
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  }
+
+  /**
+   * list city
+   */
+  public static function getUsersByCity($cityId)
+  {
+    $connect = Connect::getInstance();
+
+    $stmt = $connect->prepare("
+      select count(users.id) AS countUsers from users 
+      INNER JOIN addresses ON (addresses.id_address = users.address_id)
+      INNER JOIN cities ON (addresses.city_id = cities.id_cities)
+      where cities.id_cities = $cityId;");
+
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  }
+
   /**
    * update Radio
    */
   public static function updateRadio($usr)
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare(" SELECT * FROM addresses INNER JOIN cities ON addresses.city_id = cities.id_cities INNER JOIN states ON addresses.state_id = states.id_states;");
+
+    $stmt = $connect->prepare(" 
+    SELECT * FROM addresses 
+    INNER JOIN cities ON addresses.city_id = cities.id_cities 
+    INNER JOIN states ON addresses.state_id = states.id_states;");
     $result = array();
+
     if ($stmt->execute()) {
       while ($rs = $stmt->fetchObject(UserModel::class)) {
         $check = (isset($rs->id_address) && ($rs->id_address === $usr)) ? 'checked' : null;
@@ -189,19 +247,27 @@ class UserModel
         ";
       }
     }
+
     if (count($result) > 0) {
       return $result;
     }
+
     return false;
   }
+
   /**
    * create Radio
    */
   public static function createRadio()
   {
     $connect = Connect::getInstance();
-    $stmt = $connect->prepare(" SELECT * FROM addresses INNER JOIN cities ON addresses.city_id = cities.id_cities INNER JOIN states ON addresses.state_id = states.id_states;");
+
+    $stmt = $connect->prepare(" 
+    SELECT * FROM addresses 
+    INNER JOIN cities ON addresses.city_id = cities.id_cities 
+    INNER JOIN states ON addresses.state_id = states.id_states;");
     $result = array();
+
     if ($stmt->execute()) {
       while ($rs = $stmt->fetchObject(UserModel::class)) {
         echo "
@@ -216,9 +282,11 @@ class UserModel
         ";
       }
     }
+
     if (count($result) > 0) {
       return $result;
     }
+
     return false;
   }
 }

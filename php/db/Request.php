@@ -14,6 +14,7 @@ class Request
     if (isset($this->request[$name])) {
       return $this->request[$name];
     }
+
     return false;
   }
 }

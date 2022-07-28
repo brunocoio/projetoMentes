@@ -8,6 +8,7 @@ class CityModel
   public function __construct()
   {
   }
+
   /**
    * set regs
    */
@@ -16,6 +17,7 @@ class CityModel
     $this->attributes[$attribute] = $val;
     return $this;
   }
+
   /**
    * get regs
    */
@@ -23,6 +25,7 @@ class CityModel
   {
     return $this->attributes[$attribute];
   }
+
   /**
    * isset regs
    */
@@ -30,6 +33,7 @@ class CityModel
   {
     return isset($this->attributes[$attribute]);
   }
+
   /**
    * val regs sintax
    */
@@ -45,19 +49,23 @@ class CityModel
       return 'NULL';
     }
   }
+
   /**
    * validate regs
    */
   private function validate($value)
   {
     $result = array();
+
     foreach ($value as $k => $v) {
       if (is_scalar($v)) {
         $result[$k] = $this->escape($v);
       }
     }
+
     return $result;
   }
+
   /**
    * list
    */
@@ -65,17 +73,22 @@ class CityModel
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM $tb;");
+
     $result = array();
+
     if ($stmt->execute()) {
       while ($rs = $stmt->fetchObject(StateModel::class)) {
         $result[] = $rs;
       }
     }
+
     if (count($result) > 0) {
       return $result;
     }
+
     return false;
   }
+
   /**
    * count regs
    */
@@ -83,11 +96,14 @@ class CityModel
   {
     $connect = Connect::getInstance();
     $count = $connect->exec("SELECT count(*) FROM cities;");
+
     if ($count) {
       return (int) $count;
     }
+
     return false;
   }
+
   /**
    * search by id
    */
@@ -95,6 +111,7 @@ class CityModel
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM cities WHERE id='{$id}';");
+
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
         $result = $stmt->fetchObject('CityModel');
@@ -103,6 +120,7 @@ class CityModel
         }
       }
     }
+
     return false;
   }
 }

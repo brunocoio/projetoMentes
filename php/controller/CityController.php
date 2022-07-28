@@ -10,6 +10,7 @@ class CityController extends Controller
     $cities = CityModel::all('cities');
     return ['cities' => $cities];
   }
+
   /**
    * show regs to create
    */
@@ -17,6 +18,7 @@ class CityController extends Controller
   {
     return $this->view('form');
   }
+
   /**
    * show regs to edit
    */

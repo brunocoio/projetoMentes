@@ -8,6 +8,7 @@ class StateModel
   public function __construct()
   {
   }
+
   /**
    * set regs
    */
@@ -16,6 +17,7 @@ class StateModel
     $this->attributes[$attribute] = $val;
     return $this;
   }
+
   /**
    * get regs
    */
@@ -23,6 +25,7 @@ class StateModel
   {
     return $this->attributes[$attribute];
   }
+
   /**
    * isset regs
    */
@@ -30,6 +33,7 @@ class StateModel
   {
     return isset($this->attributes[$attribute]);
   }
+
   /**
    * val regs sintax
    */
@@ -45,6 +49,7 @@ class StateModel
       return 'NULL';
     }
   }
+
   /**
    * validate regs
    */
@@ -56,8 +61,10 @@ class StateModel
         $result[$k] = $this->escape($v);
       }
     }
+
     return $result;
   }
+
   /**
    * list
    */
@@ -65,17 +72,22 @@ class StateModel
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM $tb;");
+
     $result = array();
+
     if ($stmt->execute()) {
       while ($rs = $stmt->fetchObject(StateModel::class)) {
         $result[] = $rs;
       }
     }
+
     if (count($result) > 0) {
       return $result;
     }
+
     return false;
   }
+
   /**
    * count regs
    */
@@ -83,11 +95,14 @@ class StateModel
   {
     $connect = Connect::getInstance();
     $count = $connect->exec("SELECT count(*) FROM states;");
+
     if ($count) {
       return (int) $count;
     }
+
     return false;
   }
+
   /**
    * search by id
    */
@@ -95,6 +110,7 @@ class StateModel
   {
     $connect = Connect::getInstance();
     $stmt = $connect->prepare("SELECT * FROM states WHERE id='{$id}';");
+
     if ($stmt->execute()) {
       if ($stmt->rowCount() > 0) {
         $result = $stmt->fetchObject('StateModel');
@@ -103,6 +119,7 @@ class StateModel
         }
       }
     }
+
     return false;
   }
 }
