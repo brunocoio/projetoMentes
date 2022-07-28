@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jul-2022 às 22:09
+-- Tempo de geração: 28-Jul-2022 às 12:24
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 7.4.22
 
@@ -28,26 +28,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `addresses` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_address` bigint(20) UNSIGNED NOT NULL,
   `city_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
   `numeral` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `zipcode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `addresses`
 --
 
-INSERT INTO `addresses` (`id`, `city_id`, `state_id`, `numeral`, `address`, `zipcode`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '11', 'endereço 1', '13330001', NULL, NULL),
-(2, 2, 2, '22', 'endereço 2', '13330002', NULL, NULL),
-(3, 3, 3, '33', 'endereço 3', '13330003', NULL, NULL),
-(4, 4, 4, '44', 'endereço 4', '13330004', NULL, NULL),
-(5, 11, 11, '55', 'endereço 5', '13330005', NULL, NULL);
+INSERT INTO `addresses` (`id_address`, `city_id`, `state_id`, `numeral`, `address`, `zipcode`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '11', 'endereço 1', '13330001', '2022-07-28 10:24:15', '2022-07-28 10:24:15'),
+(2, 2, 2, '22', 'endereço 2', '13330002', '2022-07-28 10:24:15', '2022-07-28 10:24:15'),
+(3, 3, 3, '33', 'endereço 3', '13330003', '2022-07-28 10:24:15', '2022-07-28 10:24:15'),
+(4, 4, 4, '44', 'endereço 4', '13330004', '2022-07-28 10:24:15', '2022-07-28 10:24:15'),
+(5, 11, 11, '55', 'endereço 5', '13330005', '2022-07-28 10:24:15', '2022-07-28 10:24:15'),
+(8, 0, 0, '0', '0', '0', '2022-07-28 10:24:15', '2022-07-28 10:24:15');
 
 -- --------------------------------------------------------
 
@@ -56,9 +57,9 @@ INSERT INTO `addresses` (`id`, `city_id`, `state_id`, `numeral`, `address`, `zip
 --
 
 CREATE TABLE `cities` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_cities` bigint(20) UNSIGNED NOT NULL,
   `state_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_cities` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -67,7 +68,7 @@ CREATE TABLE `cities` (
 -- Extraindo dados da tabela `cities`
 --
 
-INSERT INTO `cities` (`id`, `state_id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `cities` (`id_cities`, `state_id`, `name_cities`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Rio Branco', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
 (2, 2, 'Maceió', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
 (3, 3, 'Macapá', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
@@ -174,8 +175,8 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `states` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_states` bigint(20) UNSIGNED NOT NULL,
+  `name_states` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `acronym` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -185,7 +186,7 @@ CREATE TABLE `states` (
 -- Extraindo dados da tabela `states`
 --
 
-INSERT INTO `states` (`id`, `name`, `acronym`, `created_at`, `updated_at`) VALUES
+INSERT INTO `states` (`id_states`, `name_states`, `acronym`, `created_at`, `updated_at`) VALUES
 (1, 'Acre', 'AC', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
 (2, 'Alagoas', 'AL', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
 (3, 'Amapá', 'AP', '2022-07-26 23:18:31', '2022-07-26 23:18:31'),
@@ -251,13 +252,13 @@ INSERT INTO `users` (`id`, `address_id`, `name`, `email`, `email_verified_at`, `
 -- Índices para tabela `addresses`
 --
 ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_address`);
 
 --
 -- Índices para tabela `cities`
 --
 ALTER TABLE `cities`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_cities`);
 
 --
 -- Índices para tabela `failed_jobs`
@@ -290,7 +291,7 @@ ALTER TABLE `personal_access_tokens`
 -- Índices para tabela `states`
 --
 ALTER TABLE `states`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_states`);
 
 --
 -- Índices para tabela `users`
@@ -307,13 +308,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_address` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_cities` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `failed_jobs`
@@ -337,13 +338,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de tabela `states`
 --
 ALTER TABLE `states`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_states` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
